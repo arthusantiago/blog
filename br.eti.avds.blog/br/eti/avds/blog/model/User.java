@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class User {
-	private int id,nivelAcesso;
+	private int id,nivel_acesso_id;
 	private String nome, email,password;
 	
 	public User(int id,String nome, String email,String password,int nivelAcesso) throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -13,7 +13,11 @@ public class User {
 		this.nome = nome;
 		this.email = email;
 		this.password = this.passwordToSHA(password);
-		this.nivelAcesso = nivelAcesso;
+		this.nivel_acesso_id = nivelAcesso;
+	}
+	
+	public User() {
+		super();
 	}
 
 	public String getNome() {
@@ -43,15 +47,15 @@ public class User {
 	public int getId() {
 		return id;
 	}
-
-	public int getNivelAcesso() {
-		return nivelAcesso;
-	}
-
-	public void setNivelAcesso(int nivelAcesso) {
-		this.nivelAcesso = nivelAcesso;
-	}
 	
+	public int getNivel_acesso_id() {
+		return nivel_acesso_id;
+	}
+
+	public void setNivel_acesso_id(int nivel_acesso) {
+		this.nivel_acesso_id = nivel_acesso;
+	}
+
 	public String passwordToSHA(String senha)throws NoSuchAlgorithmException,UnsupportedEncodingException{
 		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
 		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));

@@ -26,8 +26,8 @@ public class UserDao {
 					resultado.getInt("id"),
 					resultado.getString("nome"),
 					resultado.getString("email"),
-					resultado.getString("senha"),
-					resultado.getInt("nivel_acesso"));
+					resultado.getString("password"),
+					resultado.getInt("nivel_acesso_id"));
 			resultado.close();
 			sentenca.close();
 			conexao.close();
@@ -52,7 +52,7 @@ public class UserDao {
 						resultado.getString("nome"),
 						resultado.getString("email"),
 						resultado.getString("password"),
-						resultado.getInt("nivel_acesso"));
+						resultado.getInt("nivel_acesso_id"));
 				users.add(user);
 			}
 			resultado.close();
@@ -70,11 +70,11 @@ public class UserDao {
 		Connection conexao = FactoryConnection.getConnection();
 		try {
 			PreparedStatement sentenca = 
-					conexao.prepareStatement("INSERT INTO users (nome, email,password,nivel_acesso) VALUES (?,?,?,?)");
+					conexao.prepareStatement("INSERT INTO users (nome, email,password,nivel_acesso_id) VALUES (?,?,?,?)");
 			sentenca.setString(1, user.getNome());
 			sentenca.setString(2, user.getEmail());
 			sentenca.setString(3, user.getPassword());
-			sentenca.setInt(4,  user.getNivelAcesso());
+			sentenca.setInt(4,  user.getNivel_acesso_id());
 			sentenca.execute();
 			sentenca.close();
 			conexao.close();
@@ -88,11 +88,12 @@ public class UserDao {
 		Connection conexao = FactoryConnection.getConnection();
 		try {
 			PreparedStatement sentenca = 
-					conexao.prepareStatement("UPDATE users SET nome=?, email=?, password=?,nivel_acesso=? WHERE id=?");
+					conexao.prepareStatement("UPDATE users SET nome=?, email=?, password=?,nivel_acesso_id=? WHERE id=?");
 			sentenca.setString(1, user.getNome());
 			sentenca.setString(2, user.getEmail());
 			sentenca.setString(3, user.getPassword());
-			sentenca.setInt(4,  user.getNivelAcesso());
+			sentenca.setInt(4,  user.getNivel_acesso_id());
+			sentenca.setInt(5,  user.getId());
 			sentenca.execute();
 			sentenca.close();
 			conexao.close();
@@ -105,7 +106,7 @@ public class UserDao {
 	public void delete(User user) {
 		Connection conexao = FactoryConnection.getConnection();
 		try {
-			PreparedStatement sentenca = conexao.prepareStatement("DELETE FROM autores WHERE id=?");
+			PreparedStatement sentenca = conexao.prepareStatement("DELETE FROM users WHERE id=?");
 			sentenca.setInt(1, user.getId());
 			sentenca.execute();
 			sentenca.close();

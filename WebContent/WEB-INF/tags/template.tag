@@ -9,13 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Blog AVDS</title>
+    <title>Admin do Blog</title>
   </head>
   <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="/Blog/home">Blog
-				AVDS</a>
+			<a class="navbar-brand" href="/Blog/home">Blog</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,7 +26,18 @@
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/autor/index/">Autor</a></li>
 					<li class="nav-item active"><a class="nav-link" href="/Blog/tag/index/">Tag</a></li>
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/post/index">Post</a></li>
+					<li class="nav-item active"><a class="nav-link"	href="/Blog/user/index">Usuário</a></li>
 				</ul>
+			</div>
+			
+			<div class="dropdown">
+			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Opções
+			  </a>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			    <a class="dropdown-item" href="#">Configurações</a>
+			    <a class="dropdown-item" href="#">Sair</a>
+			  </div>
 			</div>
 		</nav>
 		<br>

@@ -6,14 +6,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.eti.avds.blog.dao.AutorDao;
 import br.eti.avds.blog.dao.UserDao;
-import br.eti.avds.blog.model.Autor;
 import br.eti.avds.blog.model.User;
-
+@Controller
 public class UserController {
 	
 	@RequestMapping("/user/index")
@@ -25,45 +24,41 @@ public class UserController {
 	
 	
 	@RequestMapping("/user/add")
-	public String add(HttpServletRequest request,Model model) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String add(HttpServletRequest request,User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		if(request.getMethod().equals("POST")){//está salvando
-			int id = Integer.parseInt(request.getParameter("id"));
-			int nivelAcesso = Integer.parseInt(request.getParameter("nivelAcesso"));
-			User user = new User(
-					id,
-					request.getParameter("nome"),
-					request.getParameter("email"),
-					request.getParameter("password"),
-					nivelAcesso);
+			
+			user.setNivel_acesso_id(1);//codigo temporario
+			
 			UserDao dao = new UserDao();
 			dao.save(user);
 			return "redirect:/user/index";
 		}
 		return "/user/add";
 	}
+		
 	
-	
-	@RequestMapping("/autor/edit")
-	public String edit(HttpServletRequest request, Model model) {
-		AutorDao dao = new AutorDao();
-		Autor autor = dao.get(Integer.parseInt(request.getParameter("id")));
+	@RequestMapping("/user/edit")
+	public String edit(HttpServletRequest request, Model model) throws NumberFormatException, NoSuchAlgorithmException, UnsupportedEncodingException {
+		UserDao dao = new UserDao();
+		User user = dao.get(Integer.parseInt(request.getParameter("id")));
 		if(request.getMethod().equals("POST")){//está salvando
-			autor.setNome(request.getParameter("nome"));
-			autor.setEmail(request.getParameter("email"));
-			dao.update(autor);
-			return "redirect:/autor/index";
+			user.setNome(request.getParameter("nome"));
+			user.setEmail(request.getParameter("email"));
+			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso")));
+			dao.update(user);
+			return "redirect:/user/index";
 		}		
-		model.addAttribute("autor",autor);
-		return "/autor/edit";
+		model.addAttribute("user",user);
+		return "/user/edit";
 	}
 	
 	
-	@RequestMapping("/autor/delete")
-	public String delete(HttpServletRequest request) {
-		AutorDao dao = new AutorDao();
+	@RequestMapping("/user/delete")
+	public String delete(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		UserDao dao = new UserDao();
 		int id = Integer.parseInt(request.getParameter("id"));
 		dao.delete(dao.get(id));
-		return "redirect:/autor/index";
+		return "redirect:/user/index";
 	}
 	
 //	@RequestMapping("/user/login")
