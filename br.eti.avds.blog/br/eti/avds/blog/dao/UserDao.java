@@ -15,6 +15,30 @@ import br.eti.avds.blog.model.User;
 
 public class UserDao {
 	
+	public User getEmail(String email) {
+		Connection conexao = FactoryConnection.getConnection();
+		try {
+			PreparedStatement sentenca = conexao.prepareStatement("SELECT * FROM users WHERE email LIKE ?");
+			sentenca.setString(1,email);
+			ResultSet resultado = sentenca.executeQuery();
+			User user = new User();
+			while (resultado.next()) {
+				user.setId(resultado.getInt("id"));
+				user.setEmail(resultado.getString("nome"));
+				user.setEmail(resultado.getString("email"));
+				user.setPassword(resultado.getString("password"));
+				user.setNivel_acesso_id(resultado.getInt("nivel_acesso_id"));
+			}
+			resultado.close();
+			sentenca.close();
+			conexao.close();
+			return user;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public User get(int id) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		Connection conexao = FactoryConnection.getConnection();
 		try {

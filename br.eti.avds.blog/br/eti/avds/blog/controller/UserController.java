@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,8 +62,19 @@ public class UserController {
 		return "redirect:/user/index";
 	}
 	
-//	@RequestMapping("/user/login")
-//	public boolean login(HttpServletRequest request) {
-//		return 
-//	}
+	@RequestMapping("/user/login")
+	public String login(User userLogando, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		UserDao dao = new UserDao();
+		if(new User().usuarioExiste(userLogando,dao)) {
+			User usuarioLogado = dao.getEmail(userLogando.getEmail());
+			session.setAttribute("usuarioLogado", usuarioLogado);
+			return "/page/home";
+		}
+		return "/user/login";
+	}
+	
+	@RequestMapping("/loginForm")
+	public String loginForm() {
+		return "/user/login";
+	}
 }

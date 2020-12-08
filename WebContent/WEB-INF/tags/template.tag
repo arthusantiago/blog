@@ -29,6 +29,7 @@
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/user/index">Usuário</a></li>
 				</ul>
 			</div>
+			<p class="text-right"> Olá, ${usuarioLogado.nome}!</p>
 			
 			<div class="dropdown">
 			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
