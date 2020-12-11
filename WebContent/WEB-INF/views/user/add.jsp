@@ -18,6 +18,17 @@
 				<select class="form-control" id="nivel_acesso_id" name="nivel_acesso_id">
 				</select>
 			</div>
+			
+				<div class="form-group">
+			<label for="tag_id">Tag do post</label> <select class="form-control"
+				id="tag_id" name="tag_id">
+				<c:forEach var="nivel" items="${niveis}">
+					<option value="${nivel.id}">${tag.nome}</option>
+				</c:forEach>
+			</select>
+		</div>
+			
+			
 		</div>
 		<div class="row">
 			<div class="col-sm-4 form-group">
