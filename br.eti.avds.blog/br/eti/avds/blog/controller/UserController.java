@@ -30,16 +30,15 @@ public class UserController {
 	
 	@RequestMapping("/user/add")
 	public String add(HttpServletRequest request,User user, Model model) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		if(request.getMethod().equals("POST")){//está salvando
-			
-			user.setNivel_acesso_id(1);//codigo temporario
-			List<NivelAcesso> niveis = new NivelAcessoDAO().getAll();
-			model.addAttribute("niveis", niveis);
-			
+		if(request.getMethod().equals("POST")){//está salvando	
 			UserDao dao = new UserDao();
 			dao.save(user);
 			return "redirect:/user/index";
 		}
+		
+		List<NivelAcesso> niveis = new NivelAcessoDAO().getAll();
+		model.addAttribute("niveis", niveis);
+		
 		return "/user/add";
 	}
 		
@@ -51,10 +50,13 @@ public class UserController {
 		if(request.getMethod().equals("POST")){//está salvando
 			user.setNome(request.getParameter("nome"));
 			user.setEmail(request.getParameter("email"));
-			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso")));
+			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso_id")));
 			dao.update(user);
 			return "redirect:/user/index";
-		}		
+		}
+		
+		List<NivelAcesso> niveis = new NivelAcessoDAO().getAll();
+		model.addAttribute("niveis", niveis);
 		model.addAttribute("user",user);
 		return "/user/edit";
 	}
