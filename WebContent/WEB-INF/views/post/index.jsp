@@ -12,7 +12,7 @@
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Titulo</th>
-				<th scope="col">Autor</th>
+				<th scope="col">Autor</th>				
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -21,7 +21,7 @@
 				<tr>
 					<th scope='row'>${post.id}</th>
 					<td>${post.titulo}</td>
-					<td>${post.autor.nome}</td>
+					<td>${post.autor.nome}</td>					
 					<td><a class='btn btn-success'
 						href="<c:url value="/post/edit"/>?id=${post.id}">Editar</a> <a
 						class='btn btn-danger'

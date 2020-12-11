@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.eti.avds.blog.dao.AutorDao;
+import br.eti.avds.blog.dao.CategoriaDao;
 import br.eti.avds.blog.dao.PostDao;
 import br.eti.avds.blog.dao.TagDao;
 import br.eti.avds.blog.model.Autor;
+import br.eti.avds.blog.model.Categoria;
 import br.eti.avds.blog.model.Post;
 import br.eti.avds.blog.model.Tag;
 
@@ -23,6 +25,7 @@ public class PostController {
 		PostDao dao = new PostDao();
 		List<Post> posts = dao.getAll();
 		model.addAttribute("posts", posts);
+				
 		return "/post/index";
 	}
 	
@@ -41,6 +44,11 @@ public class PostController {
 		model.addAttribute("autores", autores);
 		List<Tag> tags = new TagDao().getAll();
 		model.addAttribute("tags", tags);
+		
+		CategoriaDao categoriaDao = new CategoriaDao();
+		List<Categoria> categorias = categoriaDao.getAll();
+		model.addAttribute("categorias", categorias);
+		
 		return "/post/add";
 	}
 	

@@ -23,6 +23,16 @@
 				</c:forEach>
 			</select>
 		</div>
+		
+		<div class="form-group">
+			<label for="tag_id">Categoria do post</label> <select class="form-control"
+				id="categoria_id" name="categoria_id">
+				<c:forEach var="categoria" items="${categorias}">
+					<option value="${categoria.id}">${categoria.nome}</option>
+				</c:forEach>
+			</select>
+		</div>
+		
 		<div class="form-group">
 			<label for="tag_id">Tag do post</label> <select class="form-control"
 				id="tag_id" name="tag_id">

@@ -25,6 +25,7 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/autor/index/">Autor</a></li>
 					<li class="nav-item active"><a class="nav-link" href="/Blog/tag/index/">Tag</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/Blog/categoria/index">Categoria</a></li>
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/post/index">Post</a></li>
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/user/index">Usuário</a></li>
 				</ul>
