@@ -82,12 +82,11 @@ public class User {
 //		
 //	}
 	
-	public boolean usuarioExiste(User userLogin,UserDao dao) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		User usuarioBD = dao.getEmail(userLogin.getEmail());
+	public boolean usuarioExiste(User userLogando,UserDao dao) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		User usuarioBD = dao.getEmail(userLogando.getEmail());
 		//checando usuario
 		if(usuarioBD != null) {
-			//checando a senha
-			if(userLogin.getPassword().equals(usuarioBD.getPassword())) {
+			if(userLogando.getPassword().equals(usuarioBD.getPassword())) {
 				return true;
 			}
 			return false;

@@ -29,15 +29,16 @@
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/user/index">Usuário</a></li>
 				</ul>
 			</div>
-			<p class="text-right"> Olá, ${usuarioLogado.nome}!</p>
-			
+			<div style="margin-right:10px;">
+				<p class="text-right"> Olá, ${usuarioLogado.nome}!</p>
+			</div>
 			<div class="dropdown">
 			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    Opções
 			  </a>
 			  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 			    <a class="dropdown-item" href="#">Configurações</a>
-			    <a class="dropdown-item" href="#">Sair</a>
+			    <a class="dropdown-item" href="/Blog/logout">Sair</a>
 			  </div>
 			</div>
 		</nav>

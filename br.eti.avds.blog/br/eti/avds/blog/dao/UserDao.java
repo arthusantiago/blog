@@ -24,7 +24,7 @@ public class UserDao {
 			User user = new User();
 			while (resultado.next()) {
 				user.setId(resultado.getInt("id"));
-				user.setEmail(resultado.getString("nome"));
+				user.setNome(resultado.getString("nome"));
 				user.setEmail(resultado.getString("email"));
 				user.setPassword(resultado.getString("password"));
 				user.setNivel_acesso_id(resultado.getInt("nivel_acesso_id"));

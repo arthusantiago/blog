@@ -77,4 +77,10 @@ public class UserController {
 	public String loginForm() {
 		return "/user/login";
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:loginForm";
+	}
 }
