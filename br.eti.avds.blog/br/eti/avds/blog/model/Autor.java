@@ -7,7 +7,7 @@ public class Autor {
 	
 	public Autor(String nome, String email) {
 		this.nome = nome;
-		this.email = email;
+		this.email = email;		
 	}
 	
 	public String getNome() {
@@ -33,4 +33,6 @@ public class Autor {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
 }

@@ -25,7 +25,8 @@ public class AutorController {
 	@RequestMapping("/autor/add")
 	public String add(HttpServletRequest request,Model model) {
 		if(request.getMethod().equals("POST")){//está salvando
-			Autor autor = new Autor(request.getParameter("nome"),request.getParameter("email"));
+			Autor autor = new Autor(request.getParameter("nome"),
+					request.getParameter("email"));
 			AutorDao dao = new AutorDao();
 			dao.save(autor);
 			return "redirect:/autor/index";

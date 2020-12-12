@@ -114,8 +114,7 @@ public class UserDao {
 			PreparedStatement sentenca = 
 					conexao.prepareStatement("UPDATE users SET nome=?, email=?, password=?,nivel_acesso_id=? WHERE id=?");
 			sentenca.setString(1, user.getNome());
-			sentenca.setString(2, user.getEmail());
-			sentenca.setString(3, user.getPassword());
+			sentenca.setString(2, user.getEmail());			
 			sentenca.setInt(4,  user.getNivel_acesso_id());
 			sentenca.setInt(5,  user.getId());
 			sentenca.execute();

@@ -50,6 +50,7 @@ public class UserController {
 		if(request.getMethod().equals("POST")){//está salvando
 			user.setNome(request.getParameter("nome"));
 			user.setEmail(request.getParameter("email"));
+			user.setPassword(request.getParameter("password"));
 			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso_id")));
 			dao.update(user);
 			return "redirect:/user/index";

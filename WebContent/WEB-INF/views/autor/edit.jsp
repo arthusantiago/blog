@@ -15,6 +15,12 @@
 	    	<label for="email">E-mail</label>
 	    	<input type="email" class="form-control" id="email" name="email" value="${autor.email}">
 	  	</div>
+	  	
+	  	<div class="form-group">
+			<label for="exampleFormControlFile1">Foto</label> <input
+				type="file" class="form-control-file" id="imagem">
+		</div>
+	  	
 	  	<button type="submit" class="btn btn-primary">Salvar</button>
 	</form>
 </tags:template>

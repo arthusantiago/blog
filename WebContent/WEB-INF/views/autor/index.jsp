@@ -11,6 +11,7 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">#</th>
+	      <th scope="col">Foto</th>
 	      <th scope="col">Nome</th>
 	      <th scope="col">E-mail</th>
 	      <th scope="col"></th>
@@ -20,6 +21,7 @@
 		<c:forEach var="autor" items="${autores}">
 	        <tr>
 	          <th scope='row'>${autor.id}</th>
+	          <td><img src="..." alt="..." class="img-thumbnail">
 	          <td>${autor.nome}</td>
 	          <td>${autor.email}</td>
 	          <td>
