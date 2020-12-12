@@ -17,9 +17,11 @@
 				<input type="email" class="form-control" id="email" name="email" value="${user.email}" required>
 			</div>
 			<div class="form-group">
-				<label for="nivel_acesso_id">Nivel de acesso</label> 
-				<select class="form-control" id="nivel_acesso_id" name="nivel_acesso_id">
-					<option value="${user.nivel_acesso_id}"  selected>${user.nivel_acesso_id}</option>
+				<label for="tag_id">Nivel de acesso</label> <select
+					class="form-control" id="nivel_acesso_id" name="nivel_acesso_id">
+					<c:forEach var="nivel" items="${niveis}">
+						<option value="${nivel.id}">${nivel.nome}</option>
+					</c:forEach>
 				</select>
 			</div>
 		</div>

@@ -27,6 +27,8 @@
 					<li class="nav-item active"><a class="nav-link" href="/Blog/tag/index/">Tag</a></li>
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/post/index">Post</a></li>
 					<li class="nav-item active"><a class="nav-link"	href="/Blog/user/index">Usuário</a></li>
+					<li class="nav-item active"><a class="nav-link"	href="/Blog/nivel-acesso/index">Nivel Acesso</a></li>
+					<li class="nav-item active"><a class="nav-link"	href="/Blog/paginas/index">Páginas</a></li>
 				</ul>
 			</div>
 			<div style="margin-right:10px;">

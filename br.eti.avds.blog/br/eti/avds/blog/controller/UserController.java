@@ -11,7 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.eti.avds.blog.dao.AutorDao;
+import br.eti.avds.blog.dao.NivelAcessoDAO;
 import br.eti.avds.blog.dao.UserDao;
+import br.eti.avds.blog.model.Autor;
+import br.eti.avds.blog.model.NivelAcesso;
 import br.eti.avds.blog.model.User;
 @Controller
 public class UserController {
@@ -25,15 +29,16 @@ public class UserController {
 	
 	
 	@RequestMapping("/user/add")
-	public String add(HttpServletRequest request,User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		if(request.getMethod().equals("POST")){//está salvando
-			
-			user.setNivel_acesso_id(1);//codigo temporario
-			
+	public String add(HttpServletRequest request,User user, Model model) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		if(request.getMethod().equals("POST")){//está salvando	
 			UserDao dao = new UserDao();
 			dao.save(user);
 			return "redirect:/user/index";
 		}
+		
+		List<NivelAcesso> niveis = new NivelAcessoDAO().getAll();
+		model.addAttribute("niveis", niveis);
+		
 		return "/user/add";
 	}
 		
@@ -45,10 +50,14 @@ public class UserController {
 		if(request.getMethod().equals("POST")){//está salvando
 			user.setNome(request.getParameter("nome"));
 			user.setEmail(request.getParameter("email"));
-			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso")));
+			user.setPassword(request.getParameter("password"));
+			user.setNivel_acesso_id(Integer.parseInt(request.getParameter("nivel_acesso_id")));
 			dao.update(user);
 			return "redirect:/user/index";
-		}		
+		}
+		
+		List<NivelAcesso> niveis = new NivelAcessoDAO().getAll();
+		model.addAttribute("niveis", niveis);
 		model.addAttribute("user",user);
 		return "/user/edit";
 	}

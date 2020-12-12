@@ -19,7 +19,8 @@ public class AutorDao implements Dao<Autor>{
 			sentenca.setInt(1, id);
 			ResultSet resultado = sentenca.executeQuery();
 			resultado.next();
-			Autor autor = new Autor(resultado.getString("nome"), resultado.getString("email"));
+			Autor autor = new Autor(resultado.getString("nome"), 
+					resultado.getString("email"));			
 			autor.setId(resultado.getInt("id"));
 			resultado.close();
 			sentenca.close();
@@ -41,7 +42,7 @@ public class AutorDao implements Dao<Autor>{
 			ResultSet resultado = sentenca.executeQuery("SELECT * FROM autores");
 			while (resultado.next()) {
 				String nome = resultado.getString("nome");
-				String email = resultado.getString("email");
+				String email = resultado.getString("email");		
 				Autor autor = new Autor(nome, email);
 				autor.setId(resultado.getInt("id"));
 				autores.add(autor);
@@ -62,7 +63,7 @@ public class AutorDao implements Dao<Autor>{
 		try {
 			PreparedStatement sentenca = conexao.prepareStatement("INSERT INTO autores (nome, email) VALUES (?,?)");
 			sentenca.setString(1, autor.getNome());
-			sentenca.setString(2,  autor.getEmail());
+			sentenca.setString(2,  autor.getEmail());			
 			sentenca.execute();
 			sentenca.close();
 			conexao.close();
@@ -77,7 +78,7 @@ public class AutorDao implements Dao<Autor>{
 		try {
 			PreparedStatement sentenca = conexao.prepareStatement("UPDATE autores SET nome=?, email=? WHERE id=?");
 			sentenca.setString(1, autor.getNome());
-			sentenca.setString(2,  autor.getEmail());
+			sentenca.setString(2,  autor.getEmail());		
 			sentenca.setInt(3, autor.getId());
 			sentenca.execute();
 			sentenca.close();
