@@ -12,7 +12,6 @@
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Titulo</th>
-				<th scope="col">User</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -21,11 +20,10 @@
 				<tr>
 					<th scope='row'>${pagina.id}</th>
 					<td>${pagina.titulo}</td>
-					<td>${post.user.nome}</td>
-					<td><a class='btn btn-success'
-						href="<c:url value="/paginas/edit"/>?id=${pagina.id}">Editar</a> <a
-						class='btn btn-danger'
-						href="<c:url value="/paginas/delete"/>?id=${pagina.id}">Excluir</a></td>
+					<td>
+						<a class='btn btn-success' href="<c:url value="/paginas/edit"/>?id=${pagina.id}">Editar</a> 
+						<a class='btn btn-danger' href="<c:url value="/paginas/delete"/>?id=${pagina.id}">Excluir</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

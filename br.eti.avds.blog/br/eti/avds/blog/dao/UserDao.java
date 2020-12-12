@@ -111,14 +111,27 @@ public class UserDao {
 	public void update(User user) {
 		Connection conexao = FactoryConnection.getConnection();
 		try {
-			PreparedStatement sentenca = 
-					conexao.prepareStatement("UPDATE users SET nome=?, email=?, password=?,nivel_acesso_id=? WHERE id=?");
-			sentenca.setString(1, user.getNome());
-			sentenca.setString(2, user.getEmail());			
-			sentenca.setInt(4,  user.getNivel_acesso_id());
-			sentenca.setInt(5,  user.getId());
-			sentenca.execute();
-			sentenca.close();
+			
+			if(user.getPassword()!= null){ //editando senha
+				String texto = "UPDATE users SET nome=?, email=?, password=?,nivel_acesso_id=? WHERE id=?";
+				PreparedStatement sentenca = conexao.prepareStatement(texto);
+				sentenca.setString(1, user.getNome());
+				sentenca.setString(2, user.getEmail());		
+				sentenca.setString(3, user.getPassword());		
+				sentenca.setInt(4,  user.getNivel_acesso_id());
+				sentenca.setInt(5,  user.getId());
+				sentenca.execute();
+				sentenca.close();
+			}else{
+				String texto = "UPDATE users SET nome=?, email=?,nivel_acesso_id=? WHERE id=?";
+				PreparedStatement sentenca = conexao.prepareStatement(texto);
+				sentenca.setString(1, user.getNome());
+				sentenca.setString(2, user.getEmail());			
+				sentenca.setInt(3,  user.getNivel_acesso_id());
+				sentenca.setInt(4,  user.getId());
+				sentenca.execute();
+				sentenca.close();
+			}	
 			conexao.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
